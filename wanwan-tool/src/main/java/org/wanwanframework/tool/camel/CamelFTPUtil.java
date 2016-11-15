@@ -4,6 +4,11 @@ import org.apache.camel.CamelContext;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.impl.DefaultCamelContext;
 
+/**
+ * 专门用来集成FTP的工具
+ * @author coco
+ *
+ */
 public class CamelFTPUtil {
 
 	private static final String url = "127.0.0.1";
