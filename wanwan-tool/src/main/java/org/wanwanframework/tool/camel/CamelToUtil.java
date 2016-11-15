@@ -24,7 +24,7 @@ public class CamelToUtil {
 		try {
 			context.addRoutes(new RouteBuilder() {
 				public void configure() {
-					from("file:E:/design/linux/error_coco")
+					from("file:/home/vv/source/log")
 					.to(FTPURL_DATA)
 					.to(FTPURL_DATA2);
 				}
@@ -42,5 +42,9 @@ public class CamelToUtil {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public static void main(String args[]) {
+		copyToFTP();
 	}
 }
