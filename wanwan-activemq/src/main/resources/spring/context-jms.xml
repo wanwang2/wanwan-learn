@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- For Biz MQ-->
+    <bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <property name="brokerURL" value="${activeMQ.url}"/>
+        <property name="userName" value="${activeMQ.userName}"/>
+        <property name="password" value="${activeMQ.passWord}"/>
+    </bean>
+
+    <bean id="cachingConnectionFactory" class="org.springframework.jms.connection.CachingConnectionFactory">
+        <property name="targetConnectionFactory" ref="connectionFactory"/>
+        <property name="sessionCacheSize" value="100"/>
+        <property name="reconnectOnException" value="true"/>
+    </bean>
+
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="cachingConnectionFactory"/>
+        <property name="receiveTimeout" value="10000"/>
+        <property name="sessionTransacted" value="false"/>
+    </bean>
+
+    <bean id="jmsTemplateTx" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="cachingConnectionFactory"/>
+        <property name="receiveTimeout" value="10000"/>
+        <property name="sessionTransacted" value="true"/>
+    </bean>
+
+    <bean id="jmsConnector" class="com.chinamobile.iot.udm.jms.JMSConnector">
+        <property name="jmsTemplate" ref="jmsTemplate"/>
+        <property name="destinationQueueName" value="q.udm.response"/>
+        <property name="threadName" value="udmResponseProducer"/>
+    </bean>
+    
+  
+
+</beans>
