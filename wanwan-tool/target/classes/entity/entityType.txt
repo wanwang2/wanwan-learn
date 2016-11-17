@@ -1,3 +1,0 @@
-NUMBER		int
-VARCHAR2	String
-DATE		Date
