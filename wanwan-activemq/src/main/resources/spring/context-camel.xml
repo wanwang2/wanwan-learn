@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <!--配置camel-->
+    <camelContext xmlns="http://camel.apache.org/schema/spring">
+        <route id="activemqComponent-route">
+            <from uri="activemqComponent:queue:q.udm.response"/>
+            <log message="q.udm.response:get message..."/>
+            <process ref="mqReceiver"/>
+        </route>
+    </camelContext>
+
+    <bean id="jmsConfig" class="org.apache.camel.component.jms.JmsConfiguration">
+        <property name="connectionFactory" ref="cachingConnectionFactory"/>
+        <property name="transacted" value="false"/>
+        <property name="concurrentConsumers" value="1"/>
+    </bean>
+
+    <bean id="activemqComponent" class="org.apache.activemq.camel.component.ActiveMQComponent">
+        <property name="configuration" ref="jmsConfig"/>
+    </bean>
+</beans>

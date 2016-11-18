@@ -8,5 +8,7 @@
 		<property name="jmsConnector" ref="jmsConnector"></property>
 		<property name="message" value="${activeMQ.message}"></property>
 	</bean>
+	
+	<bean id="mqReceiver" class="org.wanwanframework.activemq.MQReceiver"/>
 
 </beans>

@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class MQProcessorTest {
 	
 	@Autowired
-	private MQProcessor mqProcessor;
+	private MQSender mqProcessor;
 	
 	@Test
 	public void testSend() {
