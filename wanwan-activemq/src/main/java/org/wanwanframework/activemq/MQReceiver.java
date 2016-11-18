@@ -6,7 +6,7 @@ import org.apache.camel.Processor;
 public class MQReceiver implements Processor{
 
 	public void process(Exchange exchange) throws Exception {
-		String messge = exchange.getIn().toString();
+		String messge = exchange.getIn().getBody().toString();
 		System.out.println("message:" + messge);
 		
 	}

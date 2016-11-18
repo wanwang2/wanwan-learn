@@ -8,7 +8,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @ContextConfiguration(locations = { "/spring/context.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
-public class MQProcessorTest {
+public class MQSenderTest {
 	
 	@Autowired
 	private MQSender mqProcessor;
