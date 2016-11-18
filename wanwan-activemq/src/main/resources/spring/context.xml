@@ -16,6 +16,7 @@
 		</property>
 	</bean>
 
+	<import resource="context-camel.xml" />
 	<import resource="context-jms.xml" />
 	<import resource="context-service.xml" />
 	
