@@ -34,7 +34,5 @@
         <property name="destinationQueueName" value="${activeMQ.send.destination}"/>
         <property name="threadName" value="udmResponseProducer"/>
     </bean>
-    
-  
 
 </beans>
