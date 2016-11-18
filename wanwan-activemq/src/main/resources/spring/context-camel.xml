@@ -7,7 +7,7 @@
     <!--配置camel-->
     <camelContext xmlns="http://camel.apache.org/schema/spring">
         <route id="activemqComponent-route">
-            <from uri="activemqComponent:queue:q.udm.response"/>
+            <from uri="activemqComponent:q.activemq.message"/>
             <log message="q.udm.response:get message..."/>
             <process ref="mqReceiver"/>
         </route>
