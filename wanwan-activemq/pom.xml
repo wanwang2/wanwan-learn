@@ -13,6 +13,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring.version>4.2.5.RELEASE</spring.version>
+		<activemq.version>5.12.1</activemq.version>
 	</properties>
 
 	<dependencies>
@@ -23,6 +24,18 @@
 			<scope>test</scope>
 		</dependency>
 		
+		  <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-client</artifactId>
+            <version>${activemq.version}</version>
+        </dependency>
+        
+          <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-camel</artifactId>
+            <version>${activemq.version}</version>
+        </dependency>
+		
 		<dependency>
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-test</artifactId>
@@ -31,16 +44,29 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.chinamobile.iot.udm</groupId>
-			<artifactId>udm-plugin-jms</artifactId>
-			<version>1.0-SNAPSHOT</version>
-		</dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jms</artifactId>
+            <version>4.2.5.RELEASE</version>
+        </dependency>
 
-		<dependency>
-			<groupId>com.chinamobile.iot.udm</groupId>
-			<artifactId>udm-plugin-web</artifactId>
-			<version>1.0-SNAPSHOT</version>
-		</dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>4.2.5.RELEASE</version>
+        </dependency>
 
 	</dependencies>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
