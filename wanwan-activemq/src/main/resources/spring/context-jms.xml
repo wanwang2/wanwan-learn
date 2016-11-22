@@ -29,10 +29,9 @@
         <property name="sessionTransacted" value="true"/>
     </bean>
 
-    <bean id="jmsConnector" class="com.chinamobile.iot.udm.jms.JMSConnector">
+    <bean id="jmsConnector" class="org.wanwanframework.activemq.JMSConnector">
         <property name="jmsTemplate" ref="jmsTemplate"/>
         <property name="destinationQueueName" value="${activeMQ.send.destination}"/>
-        <property name="threadName" value="udmResponseProducer"/>
     </bean>
 
 </beans>

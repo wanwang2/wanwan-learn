@@ -1,7 +1,5 @@
 package org.wanwanframework.activemq;
 
-import com.chinamobile.iot.udm.jms.JMSConnector;
-
 public class MQSender {
 
 	private JMSConnector jmsConnector;
