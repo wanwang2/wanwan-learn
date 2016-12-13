@@ -9,28 +9,60 @@ import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
+/**
+ * Sprecific
+ * @author coco
+ *
+ */
 public class TestSprecificMapping {
 
 	@Test
-    public void test() throws IOException {
-        //因为已经生成StringPair的源代码，所以不再使用schema了，直接调用setter和getter即可
-        StringPair datum=new StringPair();
-        datum.setLeft("L");
-        datum.setRight("R");
+	public void test() throws IOException {
+		// 因为已经生成StringPair的源代码，所以不再使用schema了，直接调用setter和getter即可
+		StringPair datum = new StringPair();
+		datum.setLeft("L");
+		datum.setRight("R");
 
-        ByteArrayOutputStream out=new ByteArrayOutputStream();
-        //不再需要传schema了，直接用StringPair作为范型和参数，
-        DatumWriter<StringPair> writer=new SpecificDatumWriter<StringPair>(StringPair.class);
-        Encoder encoder= EncoderFactory.get().binaryEncoder(out,null);
-        writer.write(datum, encoder);
-        encoder.flush();
-        out.close();
+		ByteArrayOutputStream out = writeData(datum);
+		StringPair pair = readData(out);
+		System.out.println("result:" + pair);
+		Assert.assertEquals("L", pair.getLeft().toString());
+		Assert.assertEquals("R", pair.getRight().toString());
+	}
+	
+	/**
+	 * 写：写到一个流里面
+	 * @param pair
+	 * @return
+	 */
+	private ByteArrayOutputStream writeData(StringPair pair) {
+		ByteArrayOutputStream out = new ByteArrayOutputStream();
+		// 不再需要传schema了，直接用StringPair作为范型和参数，
+		DatumWriter<StringPair> writer = new SpecificDatumWriter<StringPair>(StringPair.class);
+		Encoder encoder = EncoderFactory.get().binaryEncoder(out, null);
+		try {
+			writer.write(pair, encoder);
+			encoder.flush();
+			out.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return out;
+	}
 
-        DatumReader<StringPair> reader=new SpecificDatumReader<StringPair>(StringPair.class);
-        Decoder decoder= DecoderFactory.get().binaryDecoder(out.toByteArray(),null);
-        StringPair result=reader.read(null,decoder);
-        System.out.println("result:" + result);
-        Assert.assertEquals("L",result.getLeft().toString());
-        Assert.assertEquals("R",result.getRight().toString());
-    }
+	/**
+	 * 读:从一个流里面读取
+	 * @param out
+	 * @return
+	 */
+	private StringPair readData(ByteArrayOutputStream out) {
+		DatumReader<StringPair> reader = new SpecificDatumReader<StringPair>(StringPair.class);
+		Decoder decoder = DecoderFactory.get().binaryDecoder(out.toByteArray(), null);
+		try {
+			return reader.read(null, decoder);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }
