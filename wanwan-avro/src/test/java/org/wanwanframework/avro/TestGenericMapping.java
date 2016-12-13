@@ -55,7 +55,7 @@ public class TestGenericMapping {
 
 	/**
 	 * 获取Record
-	 * 
+	 *
 	 * @param schema
 	 * @param out
 	 * @return
