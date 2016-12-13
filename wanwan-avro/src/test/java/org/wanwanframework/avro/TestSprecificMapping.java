@@ -19,15 +19,15 @@ public class TestSprecificMapping {
 	@Test
 	public void test() throws IOException {
 		// 因为已经生成StringPair的源代码，所以不再使用schema了，直接调用setter和getter即可
-		StringPair datum = new StringPair();
-		datum.setLeft("L");
-		datum.setRight("R");
+		StringPair pair = new StringPair();
+		pair.setLeft("L");
+		pair.setRight("R");
 
-		ByteArrayOutputStream out = writeData(datum);
-		StringPair pair = readData(out);
-		System.out.println("result:" + pair);
-		Assert.assertEquals("L", pair.getLeft().toString());
-		Assert.assertEquals("R", pair.getRight().toString());
+		ByteArrayOutputStream out = writeData(pair);
+		StringPair readPair = readData(out);
+		System.out.println("result:" + readPair);
+		Assert.assertEquals("L", readPair.getLeft().toString());
+		Assert.assertEquals("R", readPair.getRight().toString());
 	}
 	
 	/**
@@ -37,7 +37,6 @@ public class TestSprecificMapping {
 	 */
 	private ByteArrayOutputStream writeData(StringPair pair) {
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
-		// 不再需要传schema了，直接用StringPair作为范型和参数，
 		DatumWriter<StringPair> writer = new SpecificDatumWriter<StringPair>(StringPair.class);
 		Encoder encoder = EncoderFactory.get().binaryEncoder(out, null);
 		try {
