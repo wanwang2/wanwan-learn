@@ -1,0 +1,26 @@
+{
+  "namespace": "com.chinamobile.iot.udm.api.direct.bwlist",
+  "type": "record",
+  "name": "BwMsgList",
+  "doc": "DirectBwList Version-1.0.0",
+  "fields": [
+    {
+      "name": "bwMsgList",
+      "type": {
+        "type": "array",
+        "items": {
+          "type": "record",
+          "name": "BwMsg",
+          "doc": "黑白名单MQ消息",
+          "fields": [
+            {"name": "eccustId","type": "string","doc":"ecCostID"},
+            {"name": "msisdn","type": "string","doc":"号码"},
+            {"name": "provinceId","type": "string","doc":"省份"},
+            {"name": "type","type": "string","doc":"黑白名单类型,1:黑名单,2:白名单"},
+            {"name": "operType","type": "string","doc":"操作类型,1:添加,2:删除"}
+          ]
+        }
+      }
+    }
+  ]
+}
