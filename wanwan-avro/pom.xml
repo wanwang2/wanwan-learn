@@ -65,7 +65,7 @@
                             <goal>idl-protocol</goal>
                         </goals>
                         <configuration>
-                            <sourceDirectory>${project.basedir}/src/main/resources/</sourceDirectory>
+                            <sourceDirectory>${project.basedir}/src/main/avro/</sourceDirectory>
                         </configuration>
                     </execution>
                 </executions>
