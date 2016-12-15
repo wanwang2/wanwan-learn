@@ -1,5 +1,8 @@
 package org.wanwanframework.activemq;
 
+import org.apache.xbean.spring.context.ClassPathXmlApplicationContext;
+import org.springframework.context.ApplicationContext;
+
 public class MQSender {
 
 	private JMSConnector jmsConnector;
@@ -26,5 +29,11 @@ public class MQSender {
 		this.message = message;
 	}
 	
-	
+	public static void main(String[] args) {
+		@SuppressWarnings("resource")
+		ApplicationContext factory= new  ClassPathXmlApplicationContext("classpath:spring/context.xml"); 
+		MQSender mqSender = (MQSender) factory.getBean("mqSender");
+		mqSender.send();
+		
+	}
 }
