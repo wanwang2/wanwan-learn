@@ -2,7 +2,7 @@
 '''file read
 '''
 def fileRead():   
-    f = open("E:\design\js\jquery\div-set.txt", "r")  
+    f = open("E:\design\linux\linux.cet.4", "r")  
     while True:  
         line = f.readline()  
         if line:
