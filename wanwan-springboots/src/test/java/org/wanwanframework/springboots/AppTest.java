@@ -1,4 +1,4 @@
-package org.wanwanframework.springboots.wanwan_springboots;
+package org.wanwanframework.springboots;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
