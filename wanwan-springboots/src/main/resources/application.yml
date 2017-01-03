@@ -1,0 +1,27 @@
+spring:
+    datasource:
+        # 生产环境需修改此配置
+        username: coco
+        # 生产环境需修改此配置
+        password: coco
+        # 是否加密
+        decrypt: false
+        driver-class-name: oracle.jdbc.driver.OracleDriver
+        name: devOrcl
+        # 生产环境需修改此配置
+        url: jdbc:oracle:thin:@localhost:1521:orcl
+        # 使用druid数据源
+        type: com.alibaba.druid.pool.DruidDataSource
+        filters: stat
+        maxActive: 20
+        initialSize: 1
+        maxWait: 60000
+        minIdle: 1
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 300000
+        validationQuery: select 1 from dual
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        poolPreparedStatements: true
+        maxOpenPreparedStatements: 20
