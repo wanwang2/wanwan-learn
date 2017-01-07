@@ -5,6 +5,5 @@
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <import resource="spring/context-dao.xml"/>
-	<import resource="spring/context-service.xml"/>
 	
 </beans>
