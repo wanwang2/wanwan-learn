@@ -5,4 +5,6 @@ def grade(x,y):
     return x**y
 
 r = grade(4, 4);
-print(r)
+print(r);
+add = lambda a,b : a + b
+print(add(2,3))
